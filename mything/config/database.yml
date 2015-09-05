@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+ <<: *default
+ database: thingy_development
+ host: localhost
+
+test:
+ <<: *default
+ database: thingy_test
+ host: localhost
+
+
+production:
+ <<: *default
+ database: thingy_production
+ username: thingy
+ password: <%= ENV['THINGY_DATABASE_PASSWORD'] %>
